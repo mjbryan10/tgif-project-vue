@@ -1,0 +1,89 @@
+/* GLOBAL VARIABLES*/
+#loader {
+  display: block;
+  position: relative;
+  margin: 0 auto; }
+  #loader.mutli-table {
+    position: fixed;
+    left: 50%;
+    margin-left: -43.5px;
+    top: 50%;
+    margin-top: -.5em; }
+  #loader.hidden {
+    display: none; }
+
+tr > th:first-child,
+tr > td:first-child {
+  text-align: left; }
+
+.state-option-container label {
+  min-width: 100px; }
+
+header {
+  margin-bottom: 1.5rem; }
+  header h1 {
+    background-image: url("../images/logo-sm.PNG");
+    background-size: cover;
+    background-repeat: none;
+    text-indent: -99999rem;
+    height: 87.5px;
+    width: 118px;
+    display: block; }
+  header nav {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: black solid 1px; }
+  header a.email-link:before {
+    content: "";
+    background-image: url("../images/mail-24.png");
+    background-size: cover;
+    background-repeat: none;
+    display: block;
+    float: left;
+    position: relative;
+    height: 1.5em;
+    width: 1.5em;
+    margin-right: .5em; }
+
+article.container .text-container {
+  max-width: 70%;
+  margin: 0; }
+  article.container .text-container p:first-of-type {
+    text-indent: 2em; }
+  article.container .text-container #more_text p:first-of-type {
+    text-indent: 0; }
+article.container img {
+  width: 337px;
+  height: 249px; }
+
+.container table {
+  max-height: 1000px;
+  overflow-y: scroll; }
+
+footer {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: black solid 1px;
+  padding: .5em; }
+  footer p {
+    margin: 0; }
+    footer p:first-of-type {
+      padding-right: 0.5em;
+      margin-right: 0.5em;
+      border-right: solid black 1px; }
+
+.tables-container {
+  flex-flow: row wrap;
+  justify-content: space-between; }
+
+@media (max-width: 768px) {
+  .filters-container {
+    flex-flow: column; }
+
+  article.container {
+    flex-direction: column-reverse; }
+    article.container div {
+      flex-flow: column; }
+    article.container .text-container, article.container img {
+      max-width: 100%;
+      margin: 0 auto; } }
+
+/*# sourceMappingURL=styles.css.map */

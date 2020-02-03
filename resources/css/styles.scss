@@ -1,0 +1,120 @@
+/* GLOBAL VARIABLES*/
+$light-grey: rgba(0,0,0,.05);
+$border-black: black solid 1px;
+
+#loader {
+    display: block;
+    position: relative;
+    margin:0 auto;
+    &.mutli-table {
+        position: fixed;
+        left:50%;
+        margin-left: -43.5px;
+        top: 50%;
+        margin-top: -.5em;
+    }
+    &.hidden{
+        display:none;
+    }
+}
+
+tr > th:first-child,
+tr > td:first-child {
+	text-align: left;
+}
+.state-option-container label {
+	min-width: 100px;
+}
+header {
+    margin-bottom: 1.5rem;
+	h1 {
+        background-image: url('../images/logo-sm.PNG');
+        background-size: cover;
+        background-repeat: none;
+        text-indent:-99999rem;
+        height: 87.5px;
+        width: 118px;
+        display: block;
+
+    }
+    nav {
+        background-color: $light-grey;
+        border: $border-black;
+    }
+	a.email-link {
+		&:before {
+			content: "";
+            background-image: url('../images/mail-24.png');
+            background-size: cover;
+            background-repeat: none;
+            display: block;
+            float: left;
+			position: relative;
+            height: 1.5em;
+            width:  1.5em;
+            margin-right: .5em;
+			
+		}
+	}
+}
+article.container {
+    .text-container{
+        max-width: 70%;
+        margin:0;
+        p:first-of-type {
+            text-indent: 2em;
+        }
+        #more_text p:first-of-type {
+            text-indent: 0;
+        }
+    }
+    img {
+        width: 337px;
+        height:249px;
+        // max-width: 30%;
+
+    }
+}
+.container table {
+    // display: block;
+    // width: 100%;
+    max-height: 1000px;
+    overflow-y: scroll;
+}
+footer {
+    background-color: $light-grey;
+    border: $border-black;
+    padding: .5em;
+    p {
+        margin:0;
+        &:first-of-type {
+            $border-distance: .5em;
+            padding-right: $border-distance;
+            margin-right: $border-distance;
+            border-right: solid black 1px;
+        }
+    }
+}
+.tables-container { //Need to fix tables at bottom with screen width small
+    flex-flow: row wrap;
+    justify-content: space-between;
+    
+    
+    
+}
+@media (max-width: 768px) {
+	.filters-container {
+		flex-flow: column;
+    }
+    article.container {
+        div {
+            flex-flow: column;
+        }
+        .text-container, img {
+            max-width: 100%;
+            margin:0 auto;
+
+        }
+        flex-direction: column-reverse;
+    }
+}
