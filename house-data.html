@@ -98,19 +98,19 @@
 					<div class="checkbox-container d-flex justify-content-start">
 						<p>Filter party by:</p>
 						<div class="form-check">
-							<label for="republican-check">
+							<label for="republican-check" v-if="possibleParties.includes('Republican')">
 								<input type="checkbox" id="republican-check" value="R" v-model="filter.republican">
 								Republican
 							</label>
 						</div>
 						<div class="form-check">
-							<label for="democrat-check">
+							<label for="democrat-check" v-if="possibleParties.includes('Democrat')">
 								<input type="checkbox" id="democrat-check" value="D" v-model="filter.democrat">
 								Democrat
 							</label>
 						</div>
 						<div class="form-check">
-							<label for="independent-check">
+							<label for="independent-check" v-if="possibleParties.includes('Independent')">
 								<input type="checkbox" id="independent-check" value="I" v-model="filter.independent">
 								Independant
 							</label>
@@ -122,10 +122,14 @@
 							<select class="form-control" id="state-option" v-model="filter.state">
 								<option value="All" >All</option>
 								<!-- remaining options to be injected by JS-->
-								<option v-for="i in uniqueStateList.length - 1">{{uniqueStateList[i]}}</option>
+								<option v-for="i in (uniqueStateList.length - 1)">{{uniqueStateList[i]}}</option>
 							</select>
 						</div>
 					</div>
+				</div>
+				<div v-if="notPossibleParties.length > 0" class="disable-msg alert alert-info d-flex justify-content-between" role="alert">
+					Note: There are no members of the {{partyText}} in the selected state.
+					<input @click="resetTable" id="reset_state_btn" class="btn btn-primary" type="reset" value="Reset">
 				</div>
 				<table id="table-data" class="table table-striped text-center">
 					<thead>
