@@ -73,19 +73,19 @@
 						<p>Filter party by:</p>
 						<div class="form-check">
 							<label for="republican-check">
-								<input type="checkbox" id="republican-check" value="R">
+								<input type="checkbox" id="republican-check" value="R" v-model="filter.republican">
 								Republican
 							</label>
 						</div>
 						<div class="form-check">
 							<label for="democrat-check">
-								<input type="checkbox" id="democrat-check" value="D">
+								<input type="checkbox" id="democrat-check" value="D" v-model="filter.democrat">
 								Democrat
 							</label>
 						</div>
 						<div class="form-check">
 							<label for="independent-check">
-								<input type="checkbox" id="independent-check" value="I">
+								<input type="checkbox" id="independent-check" value="I" v-model="filter.independent">
 								Independant
 							</label>
 						</div>
@@ -93,11 +93,12 @@
 					<div class="state-option-container d-flex">
 						<div class="form-group d-flex justify-content-end">
 							<label for="state-option">Filter by state:</label>
-							<select class="form-control" id="state-option">
-								<option value="All">All</option>
-							  	<!-- remaining options to be injected by JS-->
+							<select class="form-control" id="state-option" v-model="filter.state">
+								<option value="All" >All</option>
+								<!-- remaining options to be injected by JS-->
+								<option v-for="i in uniqueStateList.length - 1" :value="uniqueStateList[i]">{{uniqueStateList[i]}}</option>
 							</select>
-						  </div>
+						</div>
 					</div>
 				</div>
 				<table id="table-data" class="table table-striped text-center">
@@ -111,7 +112,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="member in members" v-show="(member.show == filter.state || filter.state === 'All')">
+						<tr v-for="member in filteredMembers">
 						<!-- TODO: Filter via state and filter via party -->
 							<td><a :href="member.url">{{member.first_name}} {{member.middle_name || " "}} {{member.last_name}}</a></td>
 							<td>{{member.party}}</td>
@@ -132,6 +133,9 @@
 			</footer>
 		</div>
 
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script> -->
+
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -147,8 +151,10 @@
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
 		></script>
+
+		<script src="resources/js/vue-table.js"></script>
 		<!-- <script src="resources/data/pro-congress-113-senate.js"></script>
 		<script src="resources/js/table.js"></script> -->
-		<script src="resources/js/table.js"></script>
+		<!-- <script src="resources/js/table.js"></script> -->
 	</body>
 </html>

@@ -99,19 +99,19 @@
 						<p>Filter party by:</p>
 						<div class="form-check">
 							<label for="republican-check">
-								<input type="checkbox" id="republican-check" value="R" />
+								<input type="checkbox" id="republican-check" value="R" v-model="filter.republican">
 								Republican
 							</label>
 						</div>
 						<div class="form-check">
 							<label for="democrat-check">
-								<input type="checkbox" id="democrat-check" value="D" />
+								<input type="checkbox" id="democrat-check" value="D" v-model="filter.democrat">
 								Democrat
 							</label>
 						</div>
 						<div class="form-check">
 							<label for="independent-check">
-								<input type="checkbox" id="independent-check" value="I" />
+								<input type="checkbox" id="independent-check" value="I" v-model="filter.independent">
 								Independant
 							</label>
 						</div>
@@ -122,7 +122,7 @@
 							<select class="form-control" id="state-option" v-model="filter.state">
 								<option value="All" >All</option>
 								<!-- remaining options to be injected by JS-->
-								<option v-for="i in noDuplicate.length - 1">{{noDuplicate[i]}}</option>
+								<option v-for="i in uniqueStateList.length - 1">{{uniqueStateList[i]}}</option>
 							</select>
 						</div>
 					</div>
@@ -138,7 +138,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="member in members" v-show="(member.show == filter.state || filter.state === 'All')">
+						<tr v-for="member in filteredMembers">
 						<!-- TODO: Filter via state and filter via party -->
 							<td><a :href="member.url">{{member.first_name}} {{member.middle_name || " "}} {{member.last_name}}</a></td>
 							<td>{{member.party}}</td>
