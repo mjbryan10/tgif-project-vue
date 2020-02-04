@@ -14,8 +14,8 @@
 		<title>Attendance - Senate</title>
 	</head>
 	<body>
-		<div class="container">
-			<button id="loader" class="btn btn-primary mutli-table" type="button" disabled>
+		<div class="container" id="app">
+			<button id="loader" v-if="loading" class="btn btn-primary mutli-table" type="button" disabled>
 				<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 				Loading...
 			</button>
@@ -86,18 +86,18 @@
                             <tbody>
                                 <tr>
                                     <td>Republican</td>
-                                    <td>--</td>
-                                    <td>--</td>
+                                    <td>{{membersOf('R').length}}</td>
+                                    <td>{{averageWith(membersOf('R'))}}</td>
                                 </tr>
                                 <tr>
                                     <td>Democrat</td>
-                                    <td>--</td>
-                                    <td>--</td>
+                                    <td>{{membersOf('D').length}}</td>
+                                    <td>{{averageWith(membersOf('D'))}}</td>
                                 </tr>
                                 <tr>
                                     <td>Independent</td>
-                                    <td>--</td>
-                                    <td>--</td>
+                                    <td>{{membersOf('I').length}}</td>
+                                    <td>{{averageWith(membersOf('I'))}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -114,7 +114,13 @@
                                     <th>% Missed</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+								<tr v-for="member in attendance.least">
+									<td>{{member.first_name}} {{member.middle_name || ' '}} {{member.last_name}}</td>
+									<td>{{member.missed_votes}}</td>
+									<td>{{member.missed_votes_pct}}</td>
+								</tr>
+							</tbody>
                         </table>
                     </div>
                     <div class="col-md-6">
@@ -127,7 +133,13 @@
                                     <th>% Missed</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+								<tr v-for="member in attendance.most">
+									<td>{{member.first_name}} {{member.middle_name || ' '}} {{member.last_name}}</td>
+									<td>{{member.missed_votes}}</td>
+									<td>{{member.missed_votes_pct}}</td>
+								</tr>
+							</tbody>
                         </table>
                     </div>
                 </div>  
@@ -152,9 +164,13 @@
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
-        ></script>
+		></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script> -->
+		<script src="resources/js/vue-table.js"></script>
         <!-- <script src="resources/data/pro-congress-113-senate.js"></script> -->
-        <script src="resources/js/statistics.js">
+        <!-- <script src="resources/js/statistics.js"> -->
         </script>
 	</body>
 </html>

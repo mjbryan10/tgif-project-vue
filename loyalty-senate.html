@@ -14,8 +14,8 @@
 		<title>Home</title>
 	</head>
 	<body>
-		<div class="container">
-			<button id="loader" class="btn btn-primary mutli-table" type="button" disabled>
+		<div class="container" id="app">
+			<button id="loader" v-if="loading" class="btn btn-primary mutli-table" type="button" disabled>
 				<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 				Loading...
 			</button>
@@ -112,7 +112,13 @@
                                     <th>% Party Votes</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+								<tr v-for="member in loyal.least">
+									<td>{{member.first_name}} {{member.middle_name || ' '}} {{member.last_name}}</td>
+									<td>{{member.total_votes}}</td>
+									<td>{{member.votes_with_party_pct}}</td>
+								</tr>
+							</tbody>
                         </table>
                     </div>
 			
@@ -126,7 +132,13 @@
                                         <th>% Party Votes</th>
                                     </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+									<tr v-for="member in loyal.most">
+										<td>{{member.first_name}} {{member.middle_name || ' '}} {{member.last_name}}</td>
+										<td>{{member.total_votes}}</td>
+										<td>{{member.votes_with_party_pct}}</td>
+									</tr>
+								</tbody>
                         </table>
                     </div>
                 </div> 
@@ -151,8 +163,13 @@
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
-        ></script>
-        <script src="resources/data/pro-congress-113-senate.js"></script>
-        <script src="resources/js/statistics.js"></script>
+		></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script> -->
+		<script src="resources/js/vue-table.js"></script>
+
+        <!-- <script src="resources/data/pro-congress-113-senate.js"></script>
+        <script src="resources/js/statistics.js"></script> -->
 	</body>
 </html>
