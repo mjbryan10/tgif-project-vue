@@ -96,7 +96,7 @@
 							<select class="form-control" id="state-option" v-model="filter.state">
 								<option value="All" >All</option>
 								<!-- remaining options to be injected by JS-->
-								<option v-for="i in uniqueStateList.length - 1" :value="uniqueStateList[i]">{{uniqueStateList[i]}}</option>
+								<option v-for="state in uniqueStateList" :value="state">{{state}}</option>
 							</select>
 						</div>
 					</div>

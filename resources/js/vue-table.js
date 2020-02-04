@@ -6,9 +6,9 @@ var app = new Vue({
         member_states: [],
         filter: {
             state: "All",
-            republican: "",
-            democrat: "",
-            independent: "",
+            republican: false,
+            democrat: false,
+            independent: false,
         },
         loyal: {
             least: [],
@@ -90,7 +90,6 @@ var app = new Vue({
             let arrayR = this.sortMembers(val, true)
             this[obj].least = array.slice(0, this.pct10(array, val))
             this[obj].most = arrayR.slice(0, this.pct10(arrayR, val))
-
         },
         resetTable() { //Resets the main tables (data pages)
             this.filter.state = "All";

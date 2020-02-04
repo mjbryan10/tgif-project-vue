@@ -15,10 +15,6 @@
 	</head>
 	<body>
 		<div class="container" id="app">
-			<button id="loader" v-if="loading" class="btn btn-primary mutli-table" type="button" disabled>
-				<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-				Loading...
-			</button>
 			<header class="container">
 				<div class="row d-flex justify-content-between align-items-center">
 					<h1>TGIF Logo</h1>
@@ -81,7 +77,10 @@
                                     <th>% Voted with Prty</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <div v-if="loading" class="loader spinner-border text-primary" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
+							<tbody v-if="!loading">
                                 <tr>
                                     <td>Republican</td>
                                     <td>{{membersOf('R').length}}</td>
@@ -112,7 +111,10 @@
                                     <th>% Party Votes</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <div v-if="loading" class="loader spinner-border text-primary" role="status">
+								<span class="sr-only">Loading...</span>
+							  </div>
+							<tbody v-if="!loading">
 								<tr v-for="member in loyal.least">
 									<td>{{member.first_name}} {{member.middle_name || ' '}} {{member.last_name}}</td>
 									<td>{{member.total_votes}}</td>
@@ -131,8 +133,11 @@
                                         <th>Number Party Votes</th>
                                         <th>% Party Votes</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+								</thead>
+								<div v-if="loading" class="loader spinner-border text-primary" role="status">
+									<span class="sr-only">Loading...</span>
+								  </div>
+                                <tbody v-if="!loading">
 									<tr v-for="member in loyal.most">
 										<td>{{member.first_name}} {{member.middle_name || ' '}} {{member.last_name}}</td>
 										<td>{{member.total_votes}}</td>
