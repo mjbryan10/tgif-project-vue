@@ -14,7 +14,7 @@
 		<title>House Data</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" id="app">
 			<header class="container">
 				<div class="row d-flex justify-content-between align-items-center">
 					<h1>TGIF Logo</h1>
@@ -119,15 +119,35 @@
 					<div class="state-option-container d-flex">
 						<div class="form-group d-flex justify-content-end">
 							<label for="state-option">Filter by state:</label>
-							<select class="form-control" id="state-option">
-								<option value="All">All</option>
+							<select class="form-control" id="state-option" v-model="filter.state">
+								<option value="All" >All</option>
 								<!-- remaining options to be injected by JS-->
+								<option v-for="i in noDuplicate.length - 1">{{noDuplicate[i]}}</option>
 							</select>
 						</div>
 					</div>
 				</div>
 				<table id="table-data" class="table table-striped text-center">
-					<button id="loader" class="btn btn-primary" type="button" disabled>
+					<thead>
+						<tr>
+							<th>Full Name</th>
+							<th>Party</th>
+							<th>State</th>
+							<th>Years in office</th>
+							<th>% Votes with party</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="member in members" v-show="(member.show == filter.state || filter.state === 'All')">
+						<!-- TODO: Filter via state and filter via party -->
+							<td><a :href="member.url">{{member.first_name}} {{member.middle_name || " "}} {{member.last_name}}</a></td>
+							<td>{{member.party}}</td>
+							<td>{{member.state}}</td>
+							<td>{{member.seniority}}</td>
+							<td>{{member.votes_with_party_pct}}</td>
+						</tr> 
+					</tbody>
+					<button id="loader" v-if="loading" class="btn btn-primary" type="button" disabled>
 						<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 						Loading...
 					</button>
@@ -138,6 +158,9 @@
 				<p>All Rights Reserverd</p>
 			</footer>
 		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script> -->
 
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -154,8 +177,8 @@
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
 		></script>
-		<!-- <script src="resources/data/pro-congress-113-house.js"></script>
-		<script src="resources/js/table.js"></script> -->
-		<script src="resources/js/table.js"></script>
+		<!-- <script src="resources/data/pro-congress-113-house.js"></script> -->
+		<script src="resources/js/vue-table.js"></script>
+		<!-- <script src="resources/js/table.js"></script> -->
 	</body>
 </html>
