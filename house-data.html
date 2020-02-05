@@ -121,7 +121,6 @@
 							<label for="state-option">Filter by state:</label>
 							<select class="form-control" id="state-option" v-model="filter.state">
 								<option value="All" >All</option>
-								<!-- remaining options to be injected by JS-->
 								<option v-for="state in uniqueStateList">{{state}}</option>
 							</select>
 						</div>
@@ -143,7 +142,6 @@
 					</thead>
 					<tbody>
 						<tr v-for="member in filteredMembers">
-						<!-- TODO: Filter via state and filter via party -->
 							<td><a :href="member.url">{{member.first_name}} {{member.middle_name || " "}} {{member.last_name}}</a></td>
 							<td>{{member.party}}</td>
 							<td>{{member.state}}</td>
@@ -163,8 +161,8 @@
 			</footer>
 		</div>
 
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 
 		<script
 			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -181,8 +179,6 @@
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
 		></script>
-		<!-- <script src="resources/data/pro-congress-113-house.js"></script> -->
 		<script src="resources/js/vue-table.js"></script>
-		<!-- <script src="resources/js/table.js"></script> -->
 	</body>
 </html>
