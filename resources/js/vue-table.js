@@ -37,7 +37,7 @@ var app = new Vue({
             this.members = await fetch(url, {
                 method: "GET",
                 headers: {
-                    "X-API-Key": "T52gp8pFQzvOnof9mUsb0wOdHLARM6ZlEza0hTn2"
+                    "X-API-Key": API_KEY
                 }
             })
                 .then(response => response.json())
