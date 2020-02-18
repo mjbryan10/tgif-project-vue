@@ -32,8 +32,7 @@ var app = new Vue({
                 congress = 'senate';
             } //Changes the data API depending on page name
             let url = `https://api.propublica.org/congress/v1/113/${congress}/members.json`;
-            console.log("TCL: getData -> url", url)
-
+            const API_KEY = 'ep264BMj0231FmcvSpGGT2eKdOYgx8aR62qljmOz';
             this.members = await fetch(url, {
                 method: "GET",
                 headers: {
