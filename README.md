@@ -13,7 +13,7 @@ The original task was to create a website displaying data of the USA Congress, f
 * Bootstrap 4
 * HTML5
  
-# Live Demo
+## Live Demo
 
 Click [here](https://mjbryan10.github.io/tgif-project-vue/) to check out the live demo.
 
